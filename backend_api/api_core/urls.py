@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from rest_framework import permissions
 from authentication import urls as authn
+from . import urls_apidocs
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-] + authn.urlpatterns + staticfiles_urlpatterns()
+]
+urlpatterns.extend(authn.urlpatterns)
+urlpatterns.extend(staticfiles_urlpatterns())
+urlpatterns.extend(urls_apidocs.urlpatterns)

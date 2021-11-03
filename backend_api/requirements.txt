@@ -1,6 +1,17 @@
 django==3.2
-psycopg2-binary==2.9
+
+#REST Framework
 djangorestframework==3.12
+
+#Cross ORigin Resource Sharing
 django-cors-headers==3.10
+
+#Production webserver
 gunicorn==20
+
+#SQL Database
+psycopg2-binary==2.9
+
+#api documentation
+drf-yasg==1.20
 
