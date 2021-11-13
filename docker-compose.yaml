@@ -51,8 +51,7 @@ services:
       dockerfile: frontend.Dockerfile
     ports:
       - 3000:3000
-    volumes:
-      - ./kahoot_frontend:/kahoot_frontend
+    stdin_open: true
     command: npm start
     
   #still working on this service, it's requied for production  
