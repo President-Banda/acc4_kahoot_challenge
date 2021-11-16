@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)c%u^c_bjgarcd74_ib7n4ax_!l+2*o!(od2vx5d=u(3&7!wc6'
+SECRET_KEY = 'django-insecure-8lo%pg$ky=&$&ut5%u-#aez&m68-vn3yo)hc)ae!o&+bt^@zvy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,22 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication',
-    
+    'reg_auth',
+    #rest framework
     'rest_framework',
     'rest_framework.authtoken',
+    #rest authentication
     'rest_auth',
-    
+    #registration
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    
-    #CORS
-    'corsheaders',
-
-    #swagger
+    #Swagger
     'drf_yasg',
+    #CORS
+    'corsheaders',    
 ]
 
 MIDDLEWARE = [
@@ -63,9 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #CORS
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'api_core.urls'
@@ -146,6 +142,8 @@ STATIC_URL = '/static/' #to check correct path
 #Cross origin resource sharing
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8000",
+    "http://localhost",
 ]
 
 # Default primary key field type
@@ -153,10 +151,10 @@ CORS_ALLOWED_ORIGINS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
 
 SITE_ID = 1

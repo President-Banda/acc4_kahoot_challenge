@@ -4,10 +4,10 @@ services:
   backend:
     container_name: django_backend
     build:
-      context: ./backend_api
+      context: ./backend
       dockerfile: django.Dockerfile
     command: >
-      sh -c "python manage.py makemigrations authentication &&
+      sh -c "python manage.py makemigrations reg_auth &&
             python manage.py makemigrations && 
             python manage.py migrate &&
             gunicorn api_core.wsgi:application --bind 0.0.0.0:8000"
