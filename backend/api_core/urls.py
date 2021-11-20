@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
 #Swagger Schemaview
@@ -35,14 +36,17 @@ schema_view = get_schema_view(
 )
 
 swagger_urlpatterns = [
-    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name="index"),
     path('test/', views.testpage, name="testpage"),
     path('api/', include('rest_framework.urls')),
     path('api/rest-auth', include('rest_auth.urls')),
     path('api/rest-auth/registration/', include('rest_auth.registration.urls'))
 ] + swagger_urlpatterns
+
+urlpatterns += staticfiles_urlpatterns()
